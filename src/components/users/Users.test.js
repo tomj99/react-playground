@@ -6,12 +6,14 @@ import Enzyme, { shallow } from "enzyme";
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 let loading = false;
 const users = [];
+
 //shallow grabs only the top level element
 const setup = () => shallow(<Users loading={loading} users={users} />);
 
 const findByTestAttr = (wrapper, val) => wrapper.find(`[test-comp='${val}']`);
 
 test("renders without error", () => {
+  loading = false;
   const wrapper = setup();
   const usersComp = findByTestAttr(wrapper, "component-users");
 });
